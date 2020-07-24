@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
 import '../screens/ResultsScreen.dart';
+import '../models/SearchProvider.dart';
 
 class MainScreen extends StatefulWidget {
   MainScreen({Key key}) : super(key: key);
@@ -9,8 +12,6 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  String searchString = "Hello";
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,15 +19,21 @@ class _MainScreenState extends State<MainScreen> {
         title: Text("Torrent Searcher"),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            FractionallySizedBox(
-              widthFactor: 0.9,
-              child: TextField(
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          FractionallySizedBox(
+            widthFactor: 0.9,
+            child: Consumer<SearchProvider>(
+                builder: (context, searchProvider, child) {
+              TextEditingController searchBoxController =
+                  TextEditingController();
+              searchBoxController.text = searchProvider.search;
+              return TextField(
                 decoration: InputDecoration(labelText: "Search"),
                 onSubmitted: (value) {
+                  searchProvider.updateSearch(value);
                   Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (context) => ResultsScreen(
@@ -35,11 +42,11 @@ class _MainScreenState extends State<MainScreen> {
                     ),
                   );
                 },
-              ),
-            ),
-          ],
-        ),
-      ),
+              );
+            }),
+          ),
+        ],
+      )),
     );
   }
 }
