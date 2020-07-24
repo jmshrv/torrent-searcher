@@ -44,3 +44,6 @@ app.*.map.json
 
 # Real index.html (with API stuff)
 web/index.html
+
+# Android Google Services file (also API stuff)
+android/app/google-services.json
