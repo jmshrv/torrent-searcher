@@ -1,6 +1,9 @@
 # Torrent Searcher
 This project is a search aggregator for multiple torrent sites. The cool thing about it is that it works in countries and networks where these torrent sites are blocked.
 
+![Screenshot 1](https://github.com/UnicornsOnLSD/torrent-searcher/blob/master/screenshots/screenshot1.png?raw=true)
+![Screenshot 2](https://github.com/UnicornsOnLSD/torrent-searcher/blob/master/screenshots/screenshot2.png?raw=true)
+
 ## Why?
 There are three main reasons why I made this.
 
