@@ -12,3 +12,11 @@ exports.searchAll = functions.https.onCall((data, context) => {
         return results;
     });
 })
+
+exports.getMagnetLink = functions.https.onCall((data, context) => {
+    const torrent = data.torrent;
+    return TorrentSearchApi.getMagnet(torrent).then((magnet) => {
+        console.log(magnet);
+        return magnet;
+    });
+})
