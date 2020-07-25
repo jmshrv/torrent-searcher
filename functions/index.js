@@ -8,7 +8,6 @@ TorrentSearchApi.enableProvider('Rarbg');
 exports.searchAll = functions.https.onCall((data, context) => {
     const search = data.search;
     return TorrentSearchApi.search(search).then((results) => {
-        console.log(results);
         return results;
     });
 })
@@ -16,7 +15,6 @@ exports.searchAll = functions.https.onCall((data, context) => {
 exports.getMagnetLink = functions.https.onCall((data, context) => {
     const torrent = data.torrent;
     return TorrentSearchApi.getMagnet(torrent).then((magnet) => {
-        console.log(magnet);
         return magnet;
     });
 })
